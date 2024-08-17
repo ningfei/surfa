@@ -131,7 +131,7 @@ ctypedef fused datatype:
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def interp_3d_fortran_nearest(const datatype[::1, :, :, :] source,
-                              np.ndarray[np.int_t, ndim=1] target_shape,
+                              np.ndarray[np.int64_t, ndim=1] target_shape,
                               const float[:, ::1] mat,
                               const float[::1, :, :, :] disp,
                               datatype fill_value,
