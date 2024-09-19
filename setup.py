@@ -2,6 +2,7 @@
 
 import re
 import pathlib
+import sys
 
 from setuptools import setup
 from setuptools import dist
@@ -36,7 +37,10 @@ cython_build = not base_dir.joinpath('PKG-INFO').is_file()
 
 # configure c extensions
 ext = 'pyx' if cython_build else 'c'
-ext_opts = dict(extra_compile_args=['-O3', '-std=c99'])
+if sys.platform.startswith('win32')
+    ext_opts = dict(extra_compile_args=['/MT'])
+else:
+    ext_opts = dict(extra_compile_args=['-O3', '-std=c99'])
 extensions = [
     Extension('surfa.image.interp', [f'surfa/image/interp.{ext}'], **ext_opts),
     Extension('surfa.mesh.intersection', [f'surfa/mesh/intersection.{ext}'], **ext_opts),
