@@ -37,7 +37,7 @@ cython_build = not base_dir.joinpath('PKG-INFO').is_file()
 
 # configure c extensions
 ext = 'pyx' if cython_build else 'c'
-if sys.platform.startswith('win32')
+if sys.platform.startswith('win32'):
     ext_opts = dict(extra_compile_args=['/MT'])
 else:
     ext_opts = dict(extra_compile_args=['-O3', '-std=c99'])
